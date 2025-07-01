@@ -19,19 +19,19 @@ app.get('/users', (req, res) => {
     });
 });
 
-app.post('/createuser', (req, res) => {
+app.post('/users', (req, res) => {
     controller.addUser(req.body, (callback) => {
         res.send();
     });
 });
 
-app.post('/updateuser', (req, res) => {
+app.put('/users', (req, res) => {
     controller.updateUser(req.body, (callback) => {
         res.send(callback);
     });
 });
 
-app.post('/deleteuser', (req, res) => {
+app.delete('/users', (req, res) => {
     controller.deleteUser(req.body, (callback) => {
         res.send(callback);
     });
