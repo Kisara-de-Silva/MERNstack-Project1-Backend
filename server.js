@@ -1,4 +1,6 @@
 //const app = require('./app');
+require('dotenv').config();
+const uri = process.env.MONGO_URI;
 const express = require('express');
 const app = express();
 const cors = require('cors');
@@ -9,8 +11,6 @@ const router = require('./router');
 
 app.use(cors()); 
 app.use(express.json());
-
-const uri = 'mongodb+srv://KMan:KMan2003@cluster0.xrjuzrs.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
 
 const connect = async () => {
     try {
