@@ -10,19 +10,21 @@ const getUsers = (req, res, next) => {
         });
 };
 
-const addUser = (req, res, next) => {
-    const user = new User({
-        id: req.body.id,
-        name: req.body.name,
+const addUser = (req, res) => {
+  const user = new User({
+    id: req.body.id,
+    name: req.body.name
+  });
+
+  user.save()
+    .then(response => {
+      res.status(201).json({ message: 'User added successfully', response });
+    })
+    .catch(error => {
+      res.status(500).json({ error });
     });
-    user.save()
-        .then(response => {
-            res.json({ response })
-        })
-        .catch(error => {
-            res.json({ error })
-        });
-}
+};
+
 
 const updateUser = (req, res, next) => {
     const {id, name} = req.body;
